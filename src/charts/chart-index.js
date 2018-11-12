@@ -1,4 +1,4 @@
 import pie from './chart/pie';
-// import gauge from './chart/gauge';
+import gauge from './chart/gauge';
 
-export default {pie}
+export default {pie, gauge};

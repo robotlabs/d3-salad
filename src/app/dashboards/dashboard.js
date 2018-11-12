@@ -5,6 +5,15 @@ import DataForPie from './../data/source/fire.json'
 import chartFactory from './../../charts/chart-factory';
 import {parsePie} from './../data/parsers/parser.js';
 
+import {
+  apiPromiseReject, 
+  apiPromiseResolve,
+  ap1, 
+  ap2,
+  ap3,
+  apR
+} from './../../services/api-promise';
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +28,115 @@ class Dashboard extends Component {
     let c2 = chartFactory(this.node2.current, 'pie');
     c2.update(d);
 
+    apiPromiseReject(2000).then(
+      () => {
+        console.log('xxciao')
+      },
+      () => {
+        console.log('xx');
+      }
+    )
+    // .catch((r) => {
+    //   console.log('reij ', r);
+    // })
+    // .then(() => {
+    //   console.log('2');
+    // })
+    
+    ap1()
+      .then(() => {
+        return ap2()
+          .then(() => {
+            console.log('success');
+          })
+      })
+      .then(ap3)
+      .then(ap2)
+      .catch(() => {
+        console.log('yo?');
+      })
+    // ap1()
+    //   .then(ap2)
+    //   .then(apR, () => {
+    //     console.log('wow');
+    //   })
+    //   .then(ap3)
+    //   .then(ap2)
+    //   .then(ap3)
+      
+    //   .then(ap3)
+    //   .catch((e) => {
+    //     console.log('eeeh ', e);
+    //   })
+
+
+
+      // .then(() => {
+      //   console.log('here');
+      //   apiPromiseReject(3000)
+      //     .then(() => {
+
+      //     })
+      // }, () => {
+      //   console.log('ahi');
+      // })
+
+      return;
+      // .then(() => {
+      //   console.log('HARD END');
+      // })
+      // .catch((er) => {
+      //   console.log('er', er);
+      // })
+
+    return; 
+    apiPromiseResolve(1000)
+      .then(() => {
+        apiPromiseResolve(3000)
+        .then(() => {
+          console.log('Finit 2');
+        })
+      })
+      .then(() => {
+        console.log('Finit');
+      })
+        
+    
+
+      var firstMethod = function() {
+        var promise = new Promise(function(resolve, reject){
+           setTimeout(function() {
+              console.log('first method completed');
+              resolve({data: '123'});
+           }, 2000);
+        });
+        return promise;
+     };
+      
+      
+     var secondMethod = function(someStuff) {
+        var promise = new Promise(function(resolve, reject){
+           setTimeout(function() {
+              console.log('second method completed');
+              resolve({newData: someStuff.data + ' some more data'});
+           }, 2000);
+        });
+        return promise;
+     };
+      
+     var thirdMethod = function(someStuff) {
+        var promise = new Promise(function(resolve, reject){
+           setTimeout(function() {
+              console.log('third method completed');
+              resolve({result: someStuff.newData});
+           }, 3000);
+        });
+        return promise;
+     };
+    
+    firstMethod()
+     .then(secondMethod)
+     .then(thirdMethod);
     // test.bind(this)();
     // test.call(this);
     // let cx = chartFactory.call(this.node.current, 'chartTest');
