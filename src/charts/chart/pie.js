@@ -2,56 +2,56 @@ import * as d3 from 'd3';
 
 const radius = 80;
 const innerRadius = radius * 0.01;
-const rnArrayC = ['#ff0099', '#000000', '#00ff99', '#0099ff', '#335500']
 
 const pie = (g) => {
+  let storeD = {};
   const arc = d3.arc()
 		.outerRadius(radius) 
     .innerRadius(innerRadius);
+  
+  var color = d3.scaleOrdinal(["#66c2a5","#fc8d62","#8da0cb","#e78ac3","#a6d854","#ffd92f"])
+  
+  var pie = d3.pie()
+    .sort(null)
+    .value(function(d) { return d[1]; });
     
   const update = (d) => {
-    const pieChart = d3.pie().value(d => {
-      return d[1]
-    });
-    const pieData = pieChart(Object.entries(d))
-      .sort((a, b) => b.data[1] - a.data[1]);
-    //color.domain(pieData.map(d => d.data[0]));
+    let keysD = Object.keys(d);
+    let keysStoreD = Object.keys(storeD);
+    if (keysD.length < keysStoreD.length) {
+      for (let i = 0; i < keysStoreD.length; i++) {
+        const key = keysStoreD[i];
+        if (!d[key]) {
+          d[key] = 0;
+        }
+      }
+    }
 
-    const slicesx = g.selectAll('.arc')
-      .data(pieData)
+    storeD = d;
+    const pieData = pie(Object.entries(d))
 
-    slicesx
-    .exit()
-    // .transition()
-    //   .duration(1000)
-    //   .attrTween("d", arcTween)
-    .remove();
+    const arcs = g.selectAll('.arc')
+      .data(pieData);
 
-    slicesx
-      // .attr('d', arc)
-      .transition()
-      .duration(1000)
-      .attrTween("d", arcTween)
-
-    slicesx
-      .enter()
-      .append('path')
-      
-    // .merge(slicesx)
-      // .attr('d', arc) // We pass our data to our arc generator, which gives us back a long unintelligible string
-      
-      .classed('arc', true)
+    // update
+    arcs 
       .transition()
       .duration(1500)
-      .attrTween("d", arcTween)
-      .attr('fill', (d, i) => {
-        return rnArrayC[i];
-      }); 
+      .attrTween("d", arcTween);
+
+  // enter
+  arcs.enter().append("path")
+    .attr("class", "arc")
+    .attr("fill", function(d, i) { return color(i); })
+    .attr("d", arc)
+    .each(function(d) { this._current = d; });
     
       function arcTween(d) {
+        d.outerRadius = radius * 2;
         var i = d3.interpolate(this._current, d);
         this._current = i(0);
         return function(t) {
+          let x = arc(i(t))
           return arc(i(t))
         }
       

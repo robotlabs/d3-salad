@@ -14,6 +14,8 @@ import {
   apR
 } from './../../services/api-promise';
 
+import {apiPieData} from './../../services/api-pie-data';
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -21,40 +23,49 @@ class Dashboard extends Component {
     this.node2 = React.createRef();
   }
   componentDidMount() {
-    const d = parsePie(DataForPie);
+    // const d = parsePie(DataForPie);
     let c = chartFactory(this.node1.current, 'pie');
-    c.update(d);
+    c.update({male: 0, female: 0, third: 0, fourth: 0});
 
-    let c2 = chartFactory(this.node2.current, 'pie');
-    c2.update(d);
+    // let c2 = chartFactory(this.node2.current, 'pie');
+    // c2.update(d);
 
-    apiPromiseReject(2000).then(
-      () => {
-        console.log('xxciao')
-      },
-      () => {
-        console.log('xx');
-      }
-    )
-    // .catch((r) => {
+    setInterval(() => {
+      apiPieData()
+      .then((d) => {
+        console.log('updating data', d);
+        c.update(d);
+      })
+    }, 2500)
+    
+
+    // apiPromiseReject(2000).then(
+    //   () => {
+    //     console.log('xxciao')
+    //   },
+    //   () => {
+    //     console.log('xx');
+    //   }
+    // )
+    // // .catch((r) => {
     //   console.log('reij ', r);
     // })
     // .then(() => {
     //   console.log('2');
     // })
     
-    ap1()
-      .then(() => {
-        return ap2()
-          .then(() => {
-            console.log('success');
-          })
-      })
-      .then(ap3)
-      .then(ap2)
-      .catch(() => {
-        console.log('yo?');
-      })
+    // ap1()
+    //   .then(() => {
+    //     return ap2()
+    //       .then(() => {
+    //         console.log('success');
+    //       })
+    //   })
+    //   .then(ap3)
+    //   .then(ap2)
+    //   .catch(() => {
+    //     console.log('yo?');
+    //   })
     // ap1()
     //   .then(ap2)
     //   .then(apR, () => {
