@@ -1,17 +1,41 @@
 .dv1{
   position: absolute;
-  top: 100px;
-  left: 100px;
-  width: 500px;
+  top: 0px;
+  left: 0px;
+  width: 200px;
   height: 200px;
   background-color: yellow;
 }
 
 .dv2{
   position: absolute;
-  top: 300px;
-  left: 300px;
+  top: 0px;
+  left: 200px;
   width: 200px;
   height: 200px;
   background-color: red;
+}
+.dv3{
+  position: absolute;
+  top: 200px;
+  left: 0px;
+  width: 300px;
+  height: 200px;
+  background-color: #990033;
+}
+.dv4{
+  position: absolute;
+  top: 200px;
+  left: 300px;
+  width: 100px;
+  height: 100px;
+  background-color: #ff9900;
+}
+.dv5{
+  position: absolute;
+  top: 200px;
+  left: 400px;
+  width: 150px;
+  height: 200px;
+  background-color:#ff0099;
 }
