@@ -11,9 +11,8 @@ class Dashboard extends Component {
     this.node2 = React.createRef();
   }
   componentDidMount() {
-    // const d = parsePie(DataForPie);
-    let c = chartFactory(this.node1.current, 'pie');
-    c.update(
+    this.c = chartFactory(this.node1.current, 'pie');
+    this.c.update(
       {
         male: 0, 
         female: 0, 
