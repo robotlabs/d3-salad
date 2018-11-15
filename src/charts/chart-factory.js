@@ -7,7 +7,7 @@ const chartFactory = (domEl, chartType, params = {}) => {
   const h = params.h || domEl.clientHeight;
   
   const g = createG(d3El, w, h);
-  return chartIndex[chartType](g);
+  return chartIndex[chartType](g, params);
 }
 const createG = (d3El, w, h) => {
   return d3El.append('svg')

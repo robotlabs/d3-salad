@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './dashboard.css';
 
-import DataForPie from './../data/source/fire.json'
 import chartFactory from './../../charts/chart-factory';
 import {parsePie} from './../data/parsers/parser.js';
 
@@ -25,9 +24,18 @@ class Dashboard extends Component {
   componentDidMount() {
     // const d = parsePie(DataForPie);
     let c = chartFactory(this.node1.current, 'pie');
-    c.update({male: 0, female: 0, third: 0, fourth: 0});
+    c.update(
+      {
+        male: 0, 
+        female: 0, 
+        third: 0, 
+        fourth: 0,
+        fifth: 0,
+        sixth: 0,
+        seventh: 0
+      });
 
-    // let c2 = chartFactory(this.node2.current, 'pie');
+    let c2 = chartFactory(this.node2.current, 'stack');
     // c2.update(d);
 
     setInterval(() => {
@@ -36,7 +44,7 @@ class Dashboard extends Component {
         console.log('updating data', d);
         c.update(d);
       })
-    }, 2500)
+    }, 1500)
     
 
     // apiPromiseReject(2000).then(
