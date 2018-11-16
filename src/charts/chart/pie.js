@@ -4,6 +4,8 @@ const radius = 80;
 const innerRadius = radius * 0.1;
 
 const pie = (g, params) => {
+  g
+  .attr('transform', 'translate(' + 100 + ',' + 200 / 2 + ')');
   let storeD = {};
   let arc = d3.arc()
 		// .outerRadius(radius) 

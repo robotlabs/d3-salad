@@ -1,0 +1,98 @@
+{
+ "name": "flare",
+ "children": [
+  {
+   "name": "A",
+   "children": [
+    {
+     "name": "A-A",
+     "children": [
+      {"name": "A-A1", "size": 1000}
+     ]
+    },
+    {
+     "name": "A-B",
+     "children": [
+      {"name": "A-B1", "size": 3534},
+      {"name": "A-B2", "size": 5731},
+      {"name": "A-B3", "size": 7840}
+     ]
+    },
+    {
+     "name": "A-C",
+     "children": [
+      {"name": "A-C1", "size": 7074}
+     ]
+    }
+   ]
+  },
+  {
+   "name": "B",
+   "children": [
+    {"name": "B-A", "size": 17010},
+    {"name": "B-B", "size": 5842},
+    {
+     "name": "B-C",
+     "children": [
+      {"name": "B-C1", "size": 1983},
+      {"name": "B-C2", "size": 2047},
+      {"name": "B-C3", "size": 1375},
+      {"name": "B-C4", "size": 8746},
+      {"name": "B-C5", "size": 2202},
+      {"name": "B-C6", "size": 1382},
+      {"name": "B-C7", "size": 1629}
+     ]
+    },
+    {"name": "B-D", "size": 1041},
+    {"name": "B-E", "size": 5176},
+    {"name": "B-F", "size": 449}
+   ]
+  },
+  {
+   "name": "C",
+   "children": [
+    {
+     "name": "C-A",
+     "children": [
+      {"name": "C-A1", "size": 721},
+      {"name": "C-A2", "size": 4294},
+      {"name": "C-A3", "size": 9800}
+     ]
+    },
+    {"name": "C-B", "size": 1759},
+    {"name": "C-C", "size": 2165},
+    {"name": "C-D", "size": 586},
+    {"name": "C-E", "size": 3331}
+   ]
+  },
+  {
+   "name": "D",
+   "children": [
+    {"name": "D-A", "size": 8833},
+    {"name": "D-B", "size": 1732},
+    {"name": "D-C", "size": 3623},
+    {"name": "D-D", "size": 10066}
+   ]
+  },
+  {
+   "name": "E",
+   "children": [
+    {"name": "E-A", "children": [
+      {"name": "E-A", "size": 8833},
+      {"name": "D-B", "size": 1732},
+      {"name": "D-C", "size": 3623},
+      {"name": "D-D", "size": 10066}
+     ]}
+   ]
+  },
+  {
+   "name": "F",
+   "children": [
+    {"name": "F-A", "size": 1082},
+    {"name": "F-B", "size": 1336},
+    {"name": "F-C", "size": 319},
+    {"name": "F-D", "size": 10498}
+   ]
+  }
+ ]
+}

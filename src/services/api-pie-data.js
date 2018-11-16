@@ -1,4 +1,3 @@
-import {parsePie} from './../app/data/parsers/parser';
 const apiPieData = () => {
   const rn = Math.random();
   let d;
@@ -49,7 +48,28 @@ const apiPieData = () => {
   return new Promise(function(resolve,reject){
     setTimeout(function() {
       resolve(d);
-    }, 1000);
+    }, 500);
   });
 };
-export {apiPieData};
+const apiGaugeData = () => {
+  const max = Math.random() * 1200;
+  const min = max - Math.random() * 1200;
+  const value = getRandomArbitrary(min, max);
+
+  const d = {
+    max: max, 
+    min: min,
+    value: value
+  }
+    
+  // const d = parsePie(DataForPie);
+  return new Promise(function(resolve,reject){
+    setTimeout(function() {
+      resolve(d);
+    }, 0);
+  });
+}
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
+export {apiPieData, apiGaugeData};
