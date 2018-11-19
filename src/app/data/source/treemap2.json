@@ -1,0 +1,98 @@
+{
+ "name": "flare",
+ "children": [
+  {
+   "name": "A",
+   "children": [
+    {
+     "name": "A-A",
+     "children": [
+      {"name": "A-A1", "size": 500}
+     ]
+    },
+    {
+     "name": "A-B",
+     "children": [
+      {"name": "A-B1", "size": 2345},
+      {"name": "A-B2", "size": 1234},
+      {"name": "A-B3", "size": 1000}
+     ]
+    },
+    {
+     "name": "A-C",
+     "children": [
+      {"name": "A-C1", "size": 500}
+     ]
+    }
+   ]
+  },
+  {
+   "name": "B",
+   "children": [
+    {"name": "B-A", "size": 12000},
+    {"name": "B-B", "size": 400},
+    {
+     "name": "B-C",
+     "children": [
+      {"name": "B-C1", "size": 2000},
+      {"name": "B-C2", "size": 1000},
+      {"name": "B-C3", "size": 500},
+      {"name": "B-C4", "size": 800},
+      {"name": "B-C5", "size": 1200},
+      {"name": "B-C6", "size": 4000},
+      {"name": "B-C7", "size": 400}
+     ]
+    },
+    {"name": "B-D", "size": 2000},
+    {"name": "B-E", "size": 3000},
+    {"name": "B-F", "size": 340}
+   ]
+  },
+  {
+   "name": "C",
+   "children": [
+    {
+     "name": "C-A",
+     "children": [
+      {"name": "C-A1", "size": 1240},
+      {"name": "C-A2", "size": 1294},
+      {"name": "C-A3", "size": 3800}
+     ]
+    },
+    {"name": "C-B", "size": 3759},
+    {"name": "C-C", "size": 1165},
+    {"name": "C-D", "size": 1586},
+    {"name": "C-E", "size": 331}
+   ]
+  },
+  {
+   "name": "D",
+   "children": [
+    {"name": "D-A", "size": 833},
+    {"name": "D-B", "size": 2732},
+    {"name": "D-C", "size": 1623},
+    {"name": "D-D", "size": 5066}
+   ]
+  },
+  {
+   "name": "E",
+   "children": [
+    {"name": "E-A", "children": [
+      {"name": "E-A", "size": 3833},
+      {"name": "D-B", "size": 1732},
+      {"name": "D-C", "size": 2623},
+      {"name": "D-D", "size": 1066}
+     ]}
+   ]
+  },
+  {
+   "name": "F",
+   "children": [
+    {"name": "F-A", "size": 10082},
+    {"name": "F-B", "size": 13336},
+    {"name": "F-C", "size": 1319},
+    {"name": "F-D", "size": 1098}
+   ]
+  }
+ ]
+}

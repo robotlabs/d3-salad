@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './app.css';
 
-import DataForPie from './data/source/fire.json'
-import chartFactory from './../charts/chart-factory';
-import {parsePie} from './data/parsers/parser.js';
 import TweenMax from 'gsap/TweenMax';
 import Dashboard from './dashboards/dashboard';
 

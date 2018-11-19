@@ -4,6 +4,7 @@ import './dashboard.css';
 import chartFactory from './../../charts/chart-factory';
 import {apiPieData, apiGaugeData} from './../../services/api-pie-data';
 import {apiStreamData} from './../../services/api-stream-data';
+import {apiTreemapData} from './../../services/api-treemap-data';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -55,12 +56,12 @@ class Dashboard extends Component {
 
 
     this.cTreemap = chartFactory(this.node3.current, 'treemap', {});
-    // setTimeout(() => {
-    //   this.refreshCStreamData();
-    // }, 200)
-    // setInterval(() => {
-    //   this.refreshCStreamData();
-    // }, 1500)
+    setTimeout(() => {
+      this.refreshCTreemapData();
+    }, 200)
+    setInterval(() => {
+      this.refreshCTreemapData();
+    }, 3500)
 
     
   }
@@ -80,6 +81,13 @@ class Dashboard extends Component {
     apiStreamData()
       .then((d) => {
         this.cStream.update(d);
+      })
+  }
+  refreshCTreemapData() {
+    apiTreemapData()
+      .then((d) => {
+        console.log('d ', d);
+        this.cTreemap.update(d);
       })
   }
   render() {
