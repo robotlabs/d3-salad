@@ -7,13 +7,13 @@ const treemap = (g, params) => {
   const divBase = d3.select(params.domEl);
 
   const update = (data) => {
-    console.log('data ', data);
     const root = d3.hierarchy(data, (d) => d.children)
     .sum((d) => d.size);
 
   const tree = treemap(root);
   const nodes = divBase.datum(root).selectAll(".node")
       .data(tree.leaves());
+      
     //** REMOVE */
     nodes
       .exit()
