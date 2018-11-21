@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import * as utils from './../utils';
+import * as utils from './../../utils';
 const radius = 90;
 const pi = Math.PI;
 const innerRadius = radius * 0.4;
@@ -31,10 +31,9 @@ const gauge = (g, params) => {
       .ease(d3.easePoly)
       .attrTween('d', utils.arcTween(p, arc, onUpdateTransition))
   }
-  const exporter = {
+  return {
     update: update
   }
-  return exporter;
   
 }
 export default gauge;

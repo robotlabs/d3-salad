@@ -60,8 +60,9 @@ class Dashboard extends Component {
       this.refreshCTreemapData();
     }, 200)
     setInterval(() => {
+      console.log('/??');
       this.refreshCTreemapData();
-    }, 3500)
+    }, 2500)
 
     
   }
@@ -86,7 +87,6 @@ class Dashboard extends Component {
   refreshCTreemapData() {
     apiTreemapData()
       .then((d) => {
-        console.log('d ', d);
         this.cTreemap.update(d);
       })
   }

@@ -108,10 +108,9 @@ const stack = (g, params, opts = {wiggle: false}) => {
   }
   //** exporter for public access */
   update(emptyData)
-  const exporter = {
+  return {
     update: update,
     remote: remove
   }
-  return exporter;
 }
 export default stack;

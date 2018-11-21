@@ -64,9 +64,8 @@ const pie = (g) => {
     }
     return;
   }
-  const exporter = {
+  return {
     update: update
   }
-  return exporter;
 }
 export default pie;
