@@ -5,35 +5,30 @@
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 100px;
-  height: 200px;
+  width: 300px;
+  height: 500px;
   background-color: yellow;
-  z-index: 11;
+  z-index: 111;
 }
 
 .dv2{
   position: absolute;
-  top: 0px;
-  left: 200px;
+  top:400px;
+  left: 300px;
   width: 480px;
   height: 200px;
   background-color: red;
 }
 .dv3{
-  transform-style: preserve-3d;
-  transform: translateZ(0px) rotateY(50deg);
-
   position: absolute;
-  top: 200px;
-  left: 0px;
+  top: 150px;
+  left: 300px;
   width: 500px;
-  height: 350px;
+  height: 250px;
   background-color: #990033;
   z-index: 12;
 }
 .dv4{
-  transform-style: preserve-3d;
-  transform: translateZ(0px) translateX(0px) translateY(200px) rotateY(-50deg);
   position: absolute;
   top: 200px;
   left: 400px;
@@ -42,12 +37,11 @@
   background-color: #ff9900;
 }
 .dv5{
-  transform-style: preserve-3d;
-  transform: translateZ(0px) rotateY(-50deg);
   position: absolute;
-  top: 200px;
-  left: 400px;
-  width: 420px;
-  height: 200px;
+  top: 0px;
+  left: 300px;
+  width: 550px;
+  height: 150px;
+  z-index: 212;
   background-color:#ff0099;
 }

@@ -1,23 +1,30 @@
 import * as d3 from 'd3';
 const stack = (g, params, opts = {wiggle: false}) => {
   const color = d3.scaleOrdinal(["#66c2a5","#fc8d62","#8da0cb","#e78ac3","#a6d854","#ffd92f"]);
+  let _params;
+  let _g;
+
   const update = (data) => {
-    const {clientHeight: height} = g.node().parentNode;
-    let rangeW = offsetG(params, g);
+    const {clientWidth: width, clientHeight: height} = g.node().parentNode;
+    _params = params;
+    _g = g;
+
+    const offsetW = (width - _params.viewBox.w) / 6;
+    // let rangeW = offsetG();
     const stremStepLength = data.length;
     setRandomWiggle(opts);
     
     const stack = d3.stack()
-        .keys(params.keys)
+        .keys(_params.keys)
     //** wiggle? */
     if (opts.wiggle) {
       stack.offset(d3.stackOffsetWiggle);
     }
-    
+
     //** x and y scale */
     const x = d3.scaleLinear()
       .domain([1, stremStepLength])
-      .range([0, rangeW]);
+      .range([0, width]);
 
     const y = d3.scaleLinear()
     .domain([
@@ -28,10 +35,11 @@ const stack = (g, params, opts = {wiggle: false}) => {
       d3.max(stack(data), d => d3.max(d, e => e[1]))
     ])
     .range([height, 0]);
-
     //** area for stacks */
     const area = d3.area()
-      .x(d => x(d.data.streamStep))
+      .x(d => {
+        return x(d.data.streamStep);
+      })
       .y0(d => (y(d[0]) - 0))
       .y1(d => (y(d[1]) - 0))
       .curve(d3.curveBasis);
@@ -57,6 +65,19 @@ const stack = (g, params, opts = {wiggle: false}) => {
       .attr('class', 'streams')
       .attr('d', area)
       .style('fill', (d, i) => color(i));
+  }
+
+  const offsetG = (params, g) => {
+    // const {clientWidth: width} = _g.node().parentNode;
+    // let offsetW = 0;
+    // let rangeW = _params.viewBox.w;
+    // if (width > _params.viewBox.w) {
+    //   offsetW = (width - _params.viewBox.w) / 2;
+    //   rangeW = width;
+    // }
+    // _g.attr('transform', 'translate(' + -offsetW + ',' + 0 / 2 + ')');
+    // return rangeW;
+    // return 0;
   }
 
   const remove = () => {
@@ -86,19 +107,8 @@ const createEmptyData = (params) => {
   }
   return emptyData;
 }
-const offsetG = (params, g) => {
-  const {clientWidth: width} = g.node().parentNode;
-  let offsetW = 0;
-  let rangeW = params.viewBox.w;
-  if (width > params.viewBox.w) {
-    offsetW = (width - params.viewBox.w) / 2;
-    rangeW = width;
-  }
-  g.attr('transform', 'translate(' + -offsetW + ',' + 0 / 2 + ')');
-  return rangeW;
-}
+
 const setRandomWiggle = (opts) => {
-  console.log('opts ', opts);
   let rn = Math.random();
     if (rn < 0.5) {
       opts.wiggle = true;

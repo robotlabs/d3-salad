@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './dashboard.css';
+import './dashboard2.css';
 
 import chartFactory from './../../charts/chart-factory';
 import {apiPieData, apiGaugeData} from './../../services/api-pie-data';
@@ -17,33 +17,38 @@ class Dashboard extends Component {
     this.node6 = React.createRef();
   }
   componentDidMount() {
-    // this.c = chartFactory(this.node1.current, 'pie');
-    // this.c.update(
-    //   {
-    //     male: 0, 
-    //     female: 0, 
-    //     third: 0, 
-    //     fourth: 0,
-    //     fifth: 0,
-    //     sixth: 0,
-    //     seventh: 0
-    //   });
-    // setTimeout(() => {
-    //   this.refreshC1Data();
-    // }, 500)
-    // setInterval(() => {
-    //   this.refreshC1Data();
-    // }, 1500)
+    this.c = chartFactory(this.node1.current, 'pie', {
+      preserve: true
+    });
+    this.c.update(
+      {
+        male: 0, 
+        female: 0, 
+        third: 0, 
+        fourth: 0,
+        fifth: 0,
+        sixth: 0,
+        seventh: 0
+      });
+    setTimeout(() => {
+      this.refreshC1Data();
+    }, 500)
+    setInterval(() => {
+      this.refreshC1Data();
+    }, 1500)
 
-    // this.cGauge = chartFactory(this.node2.current, 'gauge');
-    // setTimeout(() => {
-    //   this.refreshC2Data();
-    // }, 500)
-    // setInterval(() => {
-    //   this.refreshC2Data();
-    // }, 1500)
+    this.cGauge = chartFactory(this.node2.current, 'gauge', {
+      preserve: true
+    });
+    setTimeout(() => {
+      this.refreshC2Data();
+    }, 500)
+    setInterval(() => {
+      this.refreshC2Data();
+    }, 1500)
 
     this.cStream = chartFactory(this.node5.current, 'stack', {
+      preserve: false,
       nrStreams: 6,
       keys: ['stream-1', 'stream-2', 'stream-3', 'stream-4', 'stream-5', 'stream-6']
     });
@@ -54,7 +59,7 @@ class Dashboard extends Component {
       this.refreshCStreamData();
     }, 3500)
 
-
+    
     this.cTreemap = chartFactory(this.node3.current, 'treemap', {});
     setTimeout(() => {
       this.refreshCTreemapData();
@@ -63,6 +68,7 @@ class Dashboard extends Component {
       console.log('/??');
       this.refreshCTreemapData();
     }, 2500)
+    
 
     
   }
@@ -93,7 +99,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="container">
-        <div 
+      <div 
           ref={this.node1}
           className="dv1"> 
         </div>
@@ -105,10 +111,14 @@ class Dashboard extends Component {
           ref={this.node3}
           className="dv3"> 
         </div>
+      {/* 
+        
+        
         <div 
           ref={this.node4}
           className="dv4"> 
         </div>
+        */}
         <div 
           ref={this.node5}
           className="dv5"> 

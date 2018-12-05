@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './app.css';
 
 import TweenMax from 'gsap/TweenMax';
-import Dashboard from './dashboards/dashboard';
+import Dashboard from './dashboards/dashboard2';
 
 
 class App extends Component {
@@ -22,7 +22,6 @@ class App extends Component {
         ref={this.node}
         className="App">
         <header className="">
-          Ciao
         </header>
         <Dashboard>
         </Dashboard>
